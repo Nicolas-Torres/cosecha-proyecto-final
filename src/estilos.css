@@ -13,20 +13,32 @@ header{
     background-color: rgba(245, 245, 245);
 }
 
-header .logo{
-    margin: 0;
-    padding: 25px 30px;
-    font-weight: bold;
-    color: orangered;
-    font-size: 2.5em;
-}
-
 header .container{
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
+
+header .logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header .icon{
+    margin: 0;
+    padding: 25px 30px 5px 30px;
+}
+
+header .titulo{
+    margin: 0;
+    padding: 5px 30px 25px 30px;
+    font-weight: bold;
+    color: royalblue;
+    font-size: 2.5em;
+}
+
 
 header nav{
     display: flex;
@@ -44,7 +56,7 @@ header a{
 }
 
 header a:hover{
-    color: orangered;
+    color: royalblue;
 }
 
 @media (min-width: 720px){
@@ -64,4 +76,25 @@ header a:hover{
         padding-bottom: 0;
         padding-right: 20px;
     }
+
+    header .logo{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    header .icon{
+        margin: 0;
+        padding: 25px 10px 25px 30px;
+    }
+    
+    header .titulo{
+        margin: 0;
+        padding: 25px 30px 25px 10px;
+        font-weight: bold;
+        color: royalblue;
+        font-size: 2.5em;
+    }
+
+
+
 }

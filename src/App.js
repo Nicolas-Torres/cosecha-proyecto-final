@@ -1,4 +1,5 @@
 import NavBar from "./components/NavBar"
+import ItemListContainer from "./components/ItemListContainer";
 
 
 // import Header from "./Header"
@@ -12,6 +13,7 @@ const App = () => {
     return (
     <>
         <NavBar/>
+        <ItemListContainer/>
     </>
     )
 };
