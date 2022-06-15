@@ -6,9 +6,9 @@ import ReactDOM from 'react-dom/client';
 //! Primer componente
 // const App = () => "Hola Mundo con JSX"
 // sin el "./" lo va a buscar dentro de la carpeta NODE MODULES
-import App from "./App";
+import App from "./ui/layout/app/App.js";
 
-import "./estilos.css"
+import "./index.css"
 
 
 // import './index.css';
