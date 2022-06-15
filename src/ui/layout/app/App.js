@@ -6,7 +6,6 @@ import Footer from "../footer/Footer"
 import icon from "../../../assets/img/icon.png"
 
 
-
 const App = () => {
     
     return (
