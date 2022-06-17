@@ -5,7 +5,7 @@ const Footer = () => {
     <>
     <footer>
         <p>Copyright &copy; Nk Company 2022</p>
-        <NavBar inHeader={false}/>
+        <NavBar inHeader={false} className="navbar-footer"/>
     </footer>    
     </>
     )

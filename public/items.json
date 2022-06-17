@@ -1,0 +1,44 @@
+[
+    {
+        "id": "AG",
+        "title": "Angenor García",
+        "picUrl": "/items/Agenor García.jpg",
+        "price": 23.25,
+        "stock": 5
+    },
+    {
+        "id": "AP",
+        "title": "Ambrosio Pastor",
+        "picUrl": "/items/Ambrosio Pastor.jpg",
+        "price": 21.76,
+        "stock": 6
+    },
+    {
+        "id": "MP",
+        "title": "Máximo Pastor",
+        "picUrl": "/items/Maximo Pastor.jpg",
+        "price": 27.35,
+        "stock": 7
+    },
+    {
+        "id": "SV",
+        "title": "Sixto Vásquez",
+        "picUrl": "/items/Sixto Vásquez.jpg",
+        "price": 23.51,
+        "stock": 8
+    },
+    {
+        "id": "SR",
+        "title": "Susana Rojas",
+        "picUrl": "/items/Susana Rojas.jpg",
+        "price": 28.22,
+        "stock": 9
+    },
+    {
+        "id": "VM",
+        "title": "Victor Mensala",
+        "picUrl": "/items/Victor Mensala.jpg",
+        "price": 26.2,
+        "stock": 10
+   }
+]

@@ -3,7 +3,7 @@ import ItemListContainer from "../../pages/cart/ItemListContainer";
 import Footer from "../footer/Footer"
 
 
-import icon from "../../../assets/img/icon.png"
+import icon from "../../../assets/img/icon/LOGO.webp"
 
 
 const App = () => {
@@ -17,13 +17,13 @@ const App = () => {
                     <div className="icon">
                         <img src={icon} width="32"/>
                     </div>
-                    <h2 className="titulo">IoT</h2>
+                    <h2 className="titulo">Cosecha Coffee</h2>
                 </div>
-                <NavBar inHeader={true}/>
+                <NavBar inHeader={true} className="navbar-header"/>
             </div>
         </header>
         <main id="main">
-            <ItemListContainer/>
+            <ItemListContainer greeting="Bienvenido a Cosecha Coffee!"/>
         </main>
         <Footer/>
     </>

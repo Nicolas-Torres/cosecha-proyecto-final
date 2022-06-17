@@ -1,0 +1,207 @@
+Node.js: LTS
+NPM: Node Package Manager, alternativas: npx, yarn
+create-react-app: Crea una aplicacion de React con el entorno ya configurado y archivos base
+
+BABEL: Transpilador
+WEBPACK: Bundler (Otros: Rollup - Brownserify - vite - Parcel)
+
+JSX: JS + XML
+
+INSTALACION POR NPM:
+
+npm {install} [tipos] <paquete>
+
+    EJEMPLO:
+
+        npm i jquery
+        npm intall jquery
+
+    TIPOS:
+
+        -S : Local para produccion
+        -D : Local para desarrollo
+        -g : Global (Instala en la carpeta global de node)
+
+INSTALACION DE APLICACION REACT:
+
+    create-react-app <apellido+idea>
+
+    EJEMPLO:
+
+        create-react-app my-app
+
+    CREA UN ARCHIVO DE CONFIGURACION Y UN ARCHIVO DE RUTAS
+
+    ubicarse en la carpeta: app
+
+    npm start: inicializa la aplicacion igual que el live server
+
+
+WEBPACK: src/index.js
+
+REACT: 
+
+REACT-DOM:
+REACT-NATIVE: aplicaciones de celular
+ELECTRO: para hacer aplicaciones de escritorio en javascript (slack, vsc, twitch)
+
+Las aplicaciones de React se forman por no o mas componentes:
+
+    1) Todos los componentes de React son funciones, siempre arrancan en mayuscula.
+        - const Foo = () => {}
+        - function Foo(){}
+    2) Para ejecutar funciones en JSX.
+        - <Foo/>
+        - <App/>
+    3) Los componentes pueden retornar una UNICO elemento
+    4) Todos pueden recibir props
+    6) Todos los componentes pueden tener un estado
+
+
+PASO A PASO:
+
+1) Instalo Node
+2) npm i -g create-react-app
+3) create-react-app app
+4) cd app
+5) npm start (para abrir la app como en un live server, localhost:3000)
+
+
+
+
+- create-react-app
+- next.js: framework
+
+
+SSR: Static site rendering - HTML + CSS clásico, archivos fisicos hardcodeados
+
+CSR: Client side rendering - 25% de etiquetas escrito en HTML y el 75% HTML escrito por JS => (JSX)
+
+SSR: Server side rendering - El server corre tu app de react, el resultado lo mete en el HTML vacío y entrega eso 
+
+
+PROPS (parametros): propiedades que se le pasan a un componente
+
+
+
+
+
+COMPONENTES DE CLASE (CLASS) Y FUNCIONALES:
+
+CLASS: 
+class App extends component {
+    ...
+}
+Ya tenian implementado el concepto de ESTADO por defecto
+
+
+FUNCIONALES: 
+const App = () => {
+    ...
+}
+No tienen el concepto de ESTADO por defecto, pero si existe el concepto de HOOKS.
+
+HOOKS: Funcionalidades que permiten que un componente incorpore algo nuevo, si un componente no tiene ESTADO, se le puede agregar un HOOK de ESTADO, entonces apartir de agregar ese HOOK el componente tiene implementado un ESTADO (HOOK DE ESTADO).
+En pocas palabras son funciones que permiten incorporar nuevas herramientas en un componente.
+
+https://es.reactjs.org/docs/hooks-intro.html
+
+
+
+HOOK useEffect()
+useEffect solo se ejecuta despues del renderizado, aun así esté declarado al inicio del codigo. React obvia su ejecucion la primera vez (1er renderrizado) y se ejecuta cuando se cambia el estado del componente (2do renderizado)
+
+const Usuarios = () => {
+    const cargando = useState(true)
+
+    useEffect(()=>{
+        // ya conseguí los usuarios
+    })
+
+    if(cargando){
+        return (
+            <ul>
+                cargando...
+            </ul>
+        )
+    }else{
+        return (
+            <ul>
+                usuarios...
+            </ul>
+        )
+    }
+
+}
+
+1ER CICLO DE VIDA: 
+1) Se carga el componente Usuarios
+2) Se crea el estado por primera vez (true)
+3) Se evalua por primera vez el condicional
+4) Se muestra "cargando..." (1er renderizado)
+5) Se activa el efecto
+6) Modifico el estado
+
+2DO CICLO DE VIDA:
+1) Se carga el componente Usuarios
+2) Se cambia el estado por 2da vez (false)
+3) Se evalua por 2da vez el condicional
+4) Se muestra "usuarios..." (2do renderizado)
+
+
+PROMISE:
+
+Es un objeto
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

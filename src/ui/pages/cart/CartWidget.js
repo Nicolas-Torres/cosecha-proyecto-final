@@ -1,5 +1,5 @@
 //! snipet: rafce
-import cart from "../../../assets/img/cart.png"
+import cart from "../../../assets/img/icon/cart.png"
 
 const CartWidget = () => {
   return (
