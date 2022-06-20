@@ -4,6 +4,7 @@ import Footer from "../footer/Footer"
 
 
 import icon from "../../../assets/img/icon/LOGO.webp"
+import ItemDetailContainer from "../../pages/cart/ItemDetailContainer";
 
 
 const App = () => {
@@ -15,15 +16,15 @@ const App = () => {
             <div className="container">
                 <div className="logo">
                     <div className="icon">
-                        <img src={icon} width="32"/>
+                        <img src={icon} width="120"/>
                     </div>
-                    <h2 className="titulo">Cosecha Coffee</h2>
                 </div>
                 <NavBar inHeader={true} className="navbar-header"/>
             </div>
         </header>
         <main id="main">
             <ItemListContainer greeting="Bienvenido a Cosecha Coffee!"/>
+            <ItemDetailContainer/>
         </main>
         <Footer/>
     </>

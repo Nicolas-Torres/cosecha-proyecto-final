@@ -152,10 +152,31 @@ const Usuarios = () => {
 PROMISE:
 
 Es un objeto
+El proceso de una promesa es ASINCRONO
 
 
 
+CODIGOS DE STATUS:
 
+1xx: Información
+
+2xx: Correcto
+    200: OK
+    201: Created
+
+3xx: Redirecciones
+    302: Found
+    304: Not modified
+    
+4xx: Errores del cliente
+    400: Bad request
+    401: Unauthorized
+    403: Forbiden
+    404: Not found
+    405: Method Not Allowed
+
+5xx: Errores del servidor
+    500: Internal Server Error
 
 
 
