@@ -1,16 +1,15 @@
 import Item from "../item/Item"
-import "./ItemList.css"
 
 const ItemList = ({ items }) => {
   return (
-    items.map(prod => 
+    items.map(items => 
         <Item
-        key={prod.id}
-        id={prod.id}
-        title={prod.title}
-        picUrl={prod.picUrl}
-        price={prod.price}
-        stock={prod.stock}
+        key={items.id}
+        id={items.id}
+        title={items.title}
+        picUrl={items.picUrl}
+        price={items.price}
+        stock={items.stock}
         />
     )
   )

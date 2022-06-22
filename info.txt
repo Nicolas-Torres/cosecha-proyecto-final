@@ -180,8 +180,31 @@ CODIGOS DE STATUS:
 
 
 
+RUTAS:
 
+.   = misma carpeta
+/   = ir a raiz o entrar a 
+..  =  subir un directorio (carpeta padre)
 
+entonces:
+
+./abc   = en la misma carpeta entrar a la carpeta "abc"
+
+/       = ir a la raiz del local host 
+
+Ej: /
+
+1) abriendo el html desde el mismo archivo:
+
+    D:\Job-Career\Cursos, Maestrias, etc\CoderHouse\React\app\index.html
+
+    / = nos llevará a al disco D:
+
+2) abriendo el html desde el Live Server:
+
+    http://127.0.0.1:5500/Proyecto%20final/index.html
+
+    / = nos llevará a la carpeta raiz que contiene el index.html
 
 
 

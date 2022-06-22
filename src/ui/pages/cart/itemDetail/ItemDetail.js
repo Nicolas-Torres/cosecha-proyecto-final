@@ -1,11 +1,15 @@
+import ItemCount from "../itemCount/ItemCount"
 
-const ItemDetail = ({description, picUrl, price}) => {
+const ItemDetail = ({item}) => {
+
   return (
-    <div>
-        <h2>{description}</h2>
-        <img src={picUrl} width="300" height="auto"/>
-        <h2>S/ {price}</h2>
-    </div>
+    <article className="item-detail">
+      <h1 className="title">{item.title}</h1>
+      <img src={item.picUrl} alt={item.title} width="300" height="auto"/>
+      <h2>{item.description}</h2>
+      <h3 id="price">{"S/" + item.price}</h3>
+      <ItemCount stock={item.stock} initial={1}/>
+    </article>
   )
 }
 

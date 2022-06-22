@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
 import ItemList from "./itemList/ItemList"
+import { useParams } from "react-router-dom"
 
 import "./ItemListContainer.css"
 
@@ -8,32 +9,54 @@ const ItemListContainer = ({ greeting }) => {
 
   const [items, setItems] = useState([])
 
+  const { category } = useParams()
+
+  console.log(category)
+
   useEffect(() => {
-    console.log("pidiendo productos...")
+    if(!category){
+      console.log("pidiendo productos...")
 
-    setTimeout(()=>{
-      
-      //! FETCH
-      // console.log(fetch(`./items.json`))
-      fetch(`./items.json`)
-      // response.json()/arrayBuffer()/text()/blob()
-      .then( response => response.json() )
-      .then( (data) => {
-        setItems(data)
-        console.log("Ok, productos cargados.")
-      } )
-      
-    },2000)
+      setTimeout(()=>{
+        
+        //! FETCH
+        //! No se puede hacer fetch a la carpeta src
+        // console.log(fetch(`./items.json`))
+        fetch(`./items.json`)
+        // response.json()/arrayBuffer()/text()/blob()
+        .then( response => response.json() )
+        .then( (data) => {
+          setItems(data)
+          console.log("Ok, productos cargados.")
+        } )
+        
+      },1000)
+    }else{
+      console.log("pidiendo productos filtrados...")
 
-  },[])
+      setTimeout(()=>{
+        
+        //! FETCH
+        //! No se puede hacer fetch a la carpeta src
+        // console.log(fetch(`./items.json`))
+        fetch(`./items.json`)
+        // response.json()/arrayBuffer()/text()/blob()
+        .then( response => response.json() )
+        .then( (data) => {
+          let filt = data.filter(item => item.category === category)
+          console.log(filt)
+          setItems(filt)
+          console.log("Ok, productos filtrados.")
+        } )
+        
+      },1000)
+    }
+
+  },[category])
 
   console.table(items)
 
-  const onAdd = (a) => {
-
-    console.log(a)
-
-  }
+  const onAdd = (a) => { }
 
   return (
     <div className="container">

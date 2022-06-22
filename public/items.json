@@ -5,6 +5,7 @@
         "picUrl": "/items/Agenor García.jpg",
         "description": "Descripcion 1",
         "price": 23.25,
+        "category": "cat1",
         "stock": 5
     },
     {
@@ -13,6 +14,7 @@
         "picUrl": "/items/Ambrosio Pastor.jpg",
         "description": "Descripcion 2",
         "price": 21.76,
+        "category": "cat1",
         "stock": 6
     },
     {
@@ -21,6 +23,7 @@
         "picUrl": "/items/Maximo Pastor.jpg",
         "description": "Descripcion 3",
         "price": 27.35,
+        "category": "cat1",
         "stock": 7
     },
     {
@@ -29,6 +32,7 @@
         "picUrl": "/items/Sixto Vásquez.jpg",
         "description": "Descripcion 4",
         "price": 23.51,
+        "category": "cat2",
         "stock": 8
     },
     {
@@ -37,6 +41,7 @@
         "picUrl": "/items/Susana Rojas.jpg",
         "description": "Descripcion 5",
         "price": 28.22,
+        "category": "cat2",
         "stock": 9
     },
     {
@@ -45,6 +50,7 @@
         "picUrl": "/items/Victor Mensala.jpg",
         "description": "Descripcion 6",
         "price": 26.20,
+        "category": "cat3",
         "stock": 10
    }
 ]
