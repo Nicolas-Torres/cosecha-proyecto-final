@@ -1,70 +1,67 @@
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import ItemList from "./itemList/ItemList"
-import { useParams } from "react-router-dom"
+import { useParams} from "react-router-dom"
 
+import spinner from "../../../assets/img/spinner.gif"
 import "./ItemListContainer.css"
 
 const ItemListContainer = ({ greeting }) => {
 
   const [items, setItems] = useState([])
-
+  const [loading, setLoading] = useState(false)
   const { category } = useParams()
 
-  console.log(category)
+  const loadingText = useRef("Cargando catálogo...");
 
   useEffect(() => {
-    if(!category){
+    if (!category){
+      loadingText.current = "Cargando catálogo...";
       console.log("pidiendo productos...")
-
       setTimeout(()=>{
-        
-        //! FETCH
-        //! No se puede hacer fetch a la carpeta src
-        // console.log(fetch(`./items.json`))
+        setLoading(true)
         fetch(`./items.json`)
-        // response.json()/arrayBuffer()/text()/blob()
-        .then( response => response.json() )
+        .then( response => response.json())
         .then( (data) => {
           setItems(data)
           console.log("Ok, productos cargados.")
-        } )
+        });
         
-      },1000)
-    }else{
+      },1000);
+      setLoading(false)
+    } else {
+      loadingText.current = "Cargando filtro..."
       console.log("pidiendo productos filtrados...")
 
       setTimeout(()=>{
-        
-        //! FETCH
-        //! No se puede hacer fetch a la carpeta src
-        // console.log(fetch(`./items.json`))
-        fetch(`./items.json`)
-        // response.json()/arrayBuffer()/text()/blob()
-        .then( response => response.json() )
-        .then( (data) => {
-          let filt = data.filter(item => item.category === category)
-          console.log(filt)
-          setItems(filt)
-          console.log("Ok, productos filtrados.")
-        } )
-        
-      },1000)
-    }
+        setLoading(true)
 
+        fetch(`../items.json`)
+        .then( response => response.json())
+        .then( (data) => {
+          setItems(data.filter(item => item.category === category))
+          console.log("Ok, productos filtrados.")
+        });
+
+      },1000);
+      setLoading(false)
+    }
   },[category])
 
-  console.table(items)
-
-  const onAdd = (a) => { }
+  console.log(items)
 
   return (
     <div className="container">
-      <p>{greeting}</p>
-      <span>ItemList</span>
+      <h2>{greeting}</h2>
       <div className="item-list">
-        {/* {items.length > 0 ? <ItemCount stock={5} initial={1} onAdd={onAdd}/> : <p>Cargando...</p>} */}
-        {items.length > 0 ? <ItemList items={items}/> : <p>Cargando...</p>}
+        {loading ? (
+          <ItemList items={items}/>
+         ) : (
+          <div className="loading-catalog">
+            <p>{loadingText.current}</p>
+            <img src={spinner} alt = "icon" width="50"/>
+          </div>
+        )}
       </div>
     </div>
   )

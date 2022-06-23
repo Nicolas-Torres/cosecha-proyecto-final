@@ -1,11 +1,8 @@
 import {useState} from "react"
-import "./itemCount.css"
 
 
-const ItemCount = ({stock, initial, onAdd}) => {
+const ItemCount = ({stock, initial}) => {
 
-    //! Como useState devuelve un array su destructuring tbn esta dentro de un array.
-    //! La única manera de cambia el estado es con la funcion qe retorna useState()
     const [contador, setContador] = useState(initial)
 
     const aumentarContador = () => {
@@ -16,6 +13,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
         contador > 1 ? setContador(contador - 1) : setContador(contador)
     }
 
+    const onAdd = (a) => { }
     const hayStock = () => {
         if(contador<=stock){
             onAdd(contador)
@@ -23,17 +21,15 @@ const ItemCount = ({stock, initial, onAdd}) => {
     }
 
     return (
-        
-    <div className="container">
-        <div className="count">
-            <button onClick={disminuirContador}>-</button>
-            <span>{contador}</span>
-            <button onClick={aumentarContador}>+</button>
+        <div className="container">
+            <div className="count-buttons">
+                <button onClick={disminuirContador}>-</button>
+                <span>{contador}</span>
+                <button onClick={aumentarContador}>+</button>
+            </div>
+            <button onClick={hayStock}>Agregar al carrito</button>
         </div>
-        <button onClick={hayStock}>Agregar al carrito</button>
-    </div>
-
-  )
+    )
 }
 
 export default ItemCount

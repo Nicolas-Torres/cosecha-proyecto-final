@@ -211,11 +211,17 @@ Ej: /
 
 
 
+fragmento (<></>) : es una etiqueta que no tiene nombre y no se renderiza en el DOM
+
+//! EXPORTAR
+//? export defautl variable
+// --> import App
+//? export variable
+// --> import {App}
 
 
-
-
-
+//! Como useState devuelve un array su destructuring tbn esta dentro de un array.
+//! La única manera de cambia el estado es con la funcion qe retorna useState()
 
 
 

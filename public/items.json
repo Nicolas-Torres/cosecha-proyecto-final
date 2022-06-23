@@ -3,7 +3,7 @@
         "id": "AG",
         "title": "Angenor García",
         "picUrl": "/items/Agenor García.jpg",
-        "description": "Descripcion 1",
+        "description": "Café de especialidad producido por Agenor García en microlotes de San Ignacio, Cajamarca. Es asombroso descubrir las notas dulces de miel, chocolate y mora. Ideal para preparar lattes o capuccinos.",
         "price": 23.25,
         "category": "cat1",
         "stock": 5
@@ -12,7 +12,7 @@
         "id": "AP",
         "title": "Ambrosio Pastor",
         "picUrl": "/items/Ambrosio Pastor.jpg",
-        "description": "Descripcion 2",
+        "description": "Café de especialidad producido por Ambrosio Pastor en microlotes de terrenos empinados de Quellouno, Cusco. Si disfrutas de un café frutal, amarás las notas a cerezas y avellanas.",
         "price": 21.76,
         "category": "cat1",
         "stock": 6
@@ -21,7 +21,7 @@
         "id": "MP",
         "title": "Máximo Pastor",
         "picUrl": "/items/Maximo Pastor.jpg",
-        "description": "Descripcion 3",
+        "description": "Café de especialidad producido por Ambrosio Pastor en microlotes de terrenos empinados de Quellouno, Cusco. Si disfrutas de un café frutal, amarás las notas a cerezas y avellanas.",
         "price": 27.35,
         "category": "cat1",
         "stock": 7
@@ -30,7 +30,7 @@
         "id": "SV",
         "title": "Sixto Vásquez",
         "picUrl": "/items/Sixto Vásquez.jpg",
-        "description": "Descripcion 4",
+        "description": "Café de especialidad producido por Sixto Vásquez en microlotes de Moyobamba, San Martín. Si te encantan los sabores dulces y a chocolate disfrutarás el perfil de miel de abeja y panela.",
         "price": 23.51,
         "category": "cat2",
         "stock": 8
@@ -39,7 +39,7 @@
         "id": "SR",
         "title": "Susana Rojas",
         "picUrl": "/items/Susana Rojas.jpg",
-        "description": "Descripcion 5",
+        "description": "Café de especialidad producido por Susana Rojas en microlotes de Quellouno, Cusco. Un café ideal para despertar por la mañana. Sus notas dulces a panela, chancaca y chocolate te recargarán de energía.",
         "price": 28.22,
         "category": "cat2",
         "stock": 9
@@ -48,7 +48,7 @@
         "id": "VM",
         "title": "Victor Mensala",
         "picUrl": "/items/Victor Mensala.jpg",
-        "description": "Descripcion 6",
+        "description": "Café de especialidad producido por Victor Mensala en un microlote de Quillabamba, Cusco. Si disfrutas de un café dulce y cítrico amarás este café con notas a manzana roja y caramelo.",
         "price": 26.20,
         "category": "cat3",
         "stock": 10

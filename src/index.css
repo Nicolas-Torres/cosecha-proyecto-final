@@ -1,14 +1,16 @@
 body {
     /* font-family: 'Roboto', sans-serif; */
-    font-family: "Source Code Variable Regular";
+    /* font-family: "Source Code Variable Bold"; */
+    font-family: 'Source Code Variable', monospace;
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body, #root {
-    height: 100vw;
-}
+/* html, body, #root {
+    height: 100%;
+} */
 
 /* comentar */
 
@@ -65,19 +67,50 @@ header a{
     font-size: 1.20em;
     transition: all 0.3s ease;
 }
-.item{
-    min-width: 250px;
-    margin: 1rem;
-    padding: 0.5rem;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
+
 header a:hover{
     color: orangered;
 }
 
-.item:hover{
+.item-list article{
+    min-width: 250px;
+    margin: 1rem;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+.item-list a{
+    text-decoration: none;
+    color: black;
+}
+
+.item-detail article{
+    min-width: 250px;
+    margin: 1rem;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+.item-detail-card article h3{
+
+    text-align: justify;
+    width: 350px
+}
+
+.item-detail .item-detail-description{
+    margin: 20px;
+}
+
+
+.item-catalog:hover{
     transform: scale(1.05);
+}
+
+.item-list,.item-detail{
+    margin: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+    
 }
 
 @media (min-width: 720px){
