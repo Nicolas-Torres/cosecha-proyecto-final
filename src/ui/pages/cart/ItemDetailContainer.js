@@ -30,7 +30,7 @@ const ItemDetailContainer = () => {
         setLoading(false)
     },[id])
 
-    console.table(itemDetail)
+    // console.table(itemDetail)
 
     return (
         <div className="container">

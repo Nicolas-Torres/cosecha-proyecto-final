@@ -48,7 +48,7 @@ const ItemListContainer = ({ greeting }) => {
     }
   },[category])
 
-  console.log(items)
+  // console.log(items)
 
   return (
     <div className="container">

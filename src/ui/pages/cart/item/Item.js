@@ -1,4 +1,4 @@
-import ItemCount from "../itemCount/ItemCount"
+// import ItemCount from "../itemCount/ItemCount"
 import { Link } from "react-router-dom"
 
 const Item = ({ id, title, picUrl, price, stock }) => {
@@ -12,7 +12,7 @@ const Item = ({ id, title, picUrl, price, stock }) => {
         </article>
       </Link>
       <h3>{"Stock disponible: " + stock}</h3>
-      <ItemCount stock={stock} initial={1}/>
+      {/* <ItemCount stock={stock} initial={1}/> */}
     </div>
   )
 }

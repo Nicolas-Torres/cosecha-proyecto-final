@@ -1,33 +1,33 @@
 import {useState} from "react"
 
 
-const ItemCount = ({stock, initial}) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
 
-    const [contador, setContador] = useState(initial)
+    const [counter, setCounter] = useState(initial)
 
-    const aumentarContador = () => {
-        contador < stock ? setContador(contador + 1) : setContador(contador)
+    const aumentarContador = (e) => {
+        e.stopPropagation()
+        counter < stock ? setCounter(counter + 1) : setCounter(counter)
     }
     
-    const disminuirContador = () => {
-        contador > 1 ? setContador(contador - 1) : setContador(contador)
+    const disminuirContador = (e) => {
+        e.stopPropagation()
+        counter > 1 ? setCounter(counter - 1) : setCounter(counter)
     }
 
-    const onAdd = (a) => { }
-    const hayStock = () => {
-        if(contador<=stock){
-            onAdd(contador)
-        }
+    const confirmStock = (e) => {
+        e.stopPropagation()
+        onAdd(counter)
     }
 
     return (
         <div className="container">
             <div className="count-buttons">
                 <button onClick={disminuirContador}>-</button>
-                <span>{contador}</span>
+                <span>{counter}</span>
                 <button onClick={aumentarContador}>+</button>
             </div>
-            <button onClick={hayStock}>Agregar al carrito</button>
+            <button onClick={confirmStock}>Agregar al carrito</button>
         </div>
     )
 }

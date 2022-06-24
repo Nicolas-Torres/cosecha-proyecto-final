@@ -10,6 +10,8 @@ const Main = () => {
             <Route path="/" element={<ItemListContainer greeting="Nuestro catálogo"/>}></Route>
             <Route path="/category/:category" element={<ItemListContainer greeting="Filtrado"/>}></Route>
             <Route path="/item/:id" element={<ItemDetailContainer />}></Route>
+            <Route path="/cart" element={<h1 style={{textAlign: "center"}}>Componente vacío: CART</h1>}></Route>
+
         </Routes>
     </main>
   )

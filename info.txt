@@ -224,17 +224,49 @@ fragmento (<></>) : es una etiqueta que no tiene nombre y no se renderiza en el 
 //! La única manera de cambia el estado es con la funcion qe retorna useState()
 
 
+const funcionCualquiera = (e) => {
+    console.log(e)
+}
+
+e (Event):
+- Es un oobjeto que representa el evento que se esta propagando actualmente
+- Elemento que disparó el evento de la funcion "funcionCualquiera"
 
 
+PROPAGACION DE EVENTOS:
+    Sobre cualquier etiqueta del HTML tenga asignado un evento (click, change, submit, etc...), esta se dispara hacia arriba (etiqueta padre) o hacia abajo (etiqueta hijo), por defecto se dispara hacia arriba y se puede configurar para que se dispare hacia abajo.
 
+    El evento disparado se propaga hacia arriba en busca de un mismo evento (click, change, submit, etc..) y disparará el evento encontrado.
 
+    Ej:
 
+     <div click={()=>{console.log("Soy el div")}}>
+            <button click={()=>{console.log("Soy el button")}}></button>
+     </div>
 
+    si el usuario presiona el botón verá en consola: 
+        - Soy el button
+    y tambien verá:
+        - Soy el div
+    sin que este evento se haya accionado por acción del usuario. Esto ocurre debido a la progagación de eventos.
 
+    A este tipo de propagacion se le conoce como BIBBLING.
 
+    Para evitar la progagación de eventos se escribe el siguiente metodo:
 
+        const funcionCualquiera = (e) => {
+            console.log(e)
+            e.stopPropagation()
+        }
+    
+    Para encontrar la etiqueta que dispara el evento a causa de otro se utiliza el siguiente método:
 
+        const funcionCualquiera = (e) => {
+            console.log(e)
+            e.currentTarget()  
+        }
 
+COMPORTAMIENTO POR DEFAULT: 
 
 
 
