@@ -1,21 +1,72 @@
 import ItemCount from "../itemCount/ItemCount"
-import { useState ,useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
+import { context } from "../CartContext"
 
 const ItemDetail = ({item}) => {
 
-  const [ purchaseCounter, setpurchaseCounter] = useState(0)
 
+  
+  const [ purchaseCounter, setPurchaseCounter] = useState(0)
+
+  const lastCart = useContext(context)
+
+  // let it = lastCart.items.find(ite => ite.id === item.id)
+  // console.log(it)
+
+  const isInCart = () => {
+    let findItem;
+    let quantity
+    if(lastCart.items.length === 0 ){
+      findItem = false
+      quantity = 0
+      return [findItem, quantity]
+    } else {
+      let it = lastCart.items.find(ite => ite.id === item.id)
+      console.log(it)
+      if (it === undefined){
+        findItem = false
+        quantity = 0 
+       
+      }else {
+        findItem = true
+        quantity = it.quantity
+        console.log(quantity)
+      }
+      return [findItem, quantity]
+    }
+  }
+  console.log(isInCart())
   //! STATE UPLIFTING
-  const onAdd = (counter) => {
-    setpurchaseCounter(counter)
+  const onAdd = (itemCounter, lastCartCounter) => {
+    let lastQuantity
+    if(isInCart()[0]){
+      lastQuantity = isInCart()[1] + itemCounter
+    } 
+    let itemInfo = {
+      id: item.id,
+      title: item.title,
+      unitPrice: item.price,
+      quantity: lastQuantity,
+      subTotal: item.price*itemCounter
+    }
+    
+    lastCart.items.push(itemInfo)
+    lastCart.setCart(lastCartCounter)
+
+    setPurchaseCounter(itemCounter)
+
   }
 
   useEffect(() => {
-    console.log("agregado al carrito")
+    if(purchaseCounter === 0){
+
+    }else{
+      console.log("agregado al carrito")
+    }
   },[purchaseCounter])
   
-  console.log(purchaseCounter)
+  // console.log(purchaseCounter)
 
   return (
     <div className="item-detail-card">

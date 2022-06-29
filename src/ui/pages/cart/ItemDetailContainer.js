@@ -9,7 +9,7 @@ import "./ItemDetailContainer.css"
 const ItemDetailContainer = () => {
 
     const [itemDetail, setItemDetail] = useState({})
-    const [loading, setLoading] = useState(false)
+
     const { id } = useParams()
 
     useEffect(() => {
@@ -17,7 +17,6 @@ const ItemDetailContainer = () => {
         console.log("pidiendo producto...")
 
         setTimeout(()=>{
-            setLoading(true)
 
             fetch("../items.json")
                 .then( response => response.json())
@@ -25,9 +24,8 @@ const ItemDetailContainer = () => {
                     setItemDetail(data.find(item => item.id === id))
                     console.log("Ok, producto cargado.")
                 })
-
-        },1000)
-        setLoading(false)
+                
+            },1000)
     },[id])
 
     // console.table(itemDetail)
@@ -36,13 +34,13 @@ const ItemDetailContainer = () => {
         <div className="container">
             <h2>Detalle del producto</h2>
             <div className="item-detail">
-                {loading ? (
-                    <ItemDetail item={itemDetail}/>
-                ) : (
+                {Object.keys(itemDetail).length === 0 ? (
                     <div className="loading-item-detail">
                         <p>Cargando detalles del producto...</p>
                         <img src={spinner} alt = "icon" width="50"/>
                     </div>
+                ) : (
+                    <ItemDetail item={itemDetail}/>
                 )}
             </div>
         </div>

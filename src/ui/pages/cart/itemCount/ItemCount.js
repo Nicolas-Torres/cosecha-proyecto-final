@@ -1,33 +1,38 @@
+import { useContext } from "react"
 import {useState} from "react"
-
+import { context } from "../CartContext"
 
 const ItemCount = ({ stock, initial, onAdd }) => {
 
-    const [counter, setCounter] = useState(initial)
+    const [itemCounter, setCounter] = useState(initial)
+
+    const lastCart = useContext(context)
+    // console.log(lastCart)
 
     const aumentarContador = (e) => {
         e.stopPropagation()
-        counter < stock ? setCounter(counter + 1) : setCounter(counter)
+        itemCounter < stock ? setCounter(itemCounter + 1) : setCounter(itemCounter)
     }
     
     const disminuirContador = (e) => {
         e.stopPropagation()
-        counter > 1 ? setCounter(counter - 1) : setCounter(counter)
+        itemCounter > 1 ? setCounter(itemCounter - 1) : setCounter(itemCounter)
     }
 
-    const confirmStock = (e) => {
+    const addToCart = (e) => {
         e.stopPropagation()
-        onAdd(counter)
+        onAdd(itemCounter, lastCart.counter + itemCounter)
+        // lastCart.setCart(lastCart.counter + itemCounter)
     }
 
     return (
         <div className="container">
             <div className="count-buttons">
                 <button onClick={disminuirContador}>-</button>
-                <span>{counter}</span>
+                <span>{itemCounter}</span>
                 <button onClick={aumentarContador}>+</button>
             </div>
-            <button onClick={confirmStock}>Agregar al carrito</button>
+            <button onClick={addToCart}>Agregar al carrito</button>
         </div>
     )
 }

@@ -48,6 +48,7 @@ const ItemListContainer = ({ greeting }) => {
     }
   },[category])
 
+  // console.log(loading)
   // console.log(items)
 
   return (
@@ -55,9 +56,9 @@ const ItemListContainer = ({ greeting }) => {
       <h2>{greeting}</h2>
       <div className="item-list">
         {loading ? (
-          <ItemList items={items}/>
-         ) : (
-          <div className="loading-catalog">
+            <ItemList items={items}/>
+          ) : (
+            <div className="loading-catalog">
             <p>{loadingText.current}</p>
             <img src={spinner} alt = "icon" width="50"/>
           </div>
