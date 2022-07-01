@@ -13,6 +13,7 @@ const SelfProvider = ({ children }) => {
     
     const [counter, setCart] = useState(0)
     const [items, setItems] = useState([])
+    const [total, setTotal] = useState(0)
 
 
     const lastCart = {
@@ -20,6 +21,8 @@ const SelfProvider = ({ children }) => {
         setCart: setCart,
         items: items,
         setItems: setItems,
+        total: Number(total.toFixed(2)),
+        setTotal: setTotal
 
     }
 
