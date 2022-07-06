@@ -31,7 +31,7 @@ const ItemListContainer = ({ greeting }) => {
       setLoading(false)
     } else {
       loadingText.current = "Cargando filtro..."
-      console.log("pidiendo productos filtrados...")
+      console.log("filtrando productos...")
 
       setTimeout(()=>{
         setLoading(true)

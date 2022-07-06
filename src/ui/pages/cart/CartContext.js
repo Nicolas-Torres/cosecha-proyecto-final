@@ -11,22 +11,93 @@ const Provider = context.Provider
 
 const SelfProvider = ({ children }) => {
     
-    const [counter, setCart] = useState(0)
+    const [counter, setCounter] = useState(0)
     const [items, setItems] = useState([])
     const [total, setTotal] = useState(0)
 
+    const isInCart = (item) => {
 
-    const lastCart = {
-        counter: counter,
-        setCart: setCart,
-        items: items,
-        setItems: setItems,
-        total: Number(total.toFixed(2)),
-        setTotal: setTotal
-
+        let findItem
+        let itemFind = lastCart.items.find(ite => ite.id === item.id)
+        console.log(itemFind)
+        if (itemFind === undefined){
+            findItem = false
+            itemFind = null
+            return { findItem, itemFind }
+        }else{
+            findItem = true
+            return { findItem, itemFind }
+        }
     }
 
-    console.log(lastCart)
+    const addItem = (item, itemCounter) => {
+
+        const { findItem, itemFind } = isInCart(item)
+        console.log(itemFind)
+
+        if (findItem) {
+            itemFind.quantity += itemCounter
+            itemFind.subTotal += subTotal(itemFind.itemPrice, itemCounter)
+        } else {
+            let newItem = {
+                id: item.id,
+                title: item.title,
+                itemPrice: item.price,
+                quantity: itemCounter,
+                subTotal: subTotal(item.price, itemCounter)
+            } 
+            lastCart.items.push(newItem)
+        }
+
+        totalCounter()
+        totalPagar()
+    }
+
+    const subTotal = (itemPrice, itemCounter) => {
+        let subTotal = Number((itemPrice*itemCounter).toFixed(2))
+        return subTotal
+    }
+
+    
+    const totalCounter = () => {
+        let count = 0 
+        for (let item of lastCart.items){
+            count += item.quantity
+        }
+        lastCart.setCounter(count)
+    }
+
+    const totalPagar = () => {
+        let count = 0
+        for(let item of lastCart.items){
+            count += item.subTotal
+        }
+        lastCart.setTotal(count)
+        // lastCart.total = count
+        // console.log(lastCart.total)
+    }
+    
+    const removeItem = (id) => {
+        let newItems = lastCart.items.filter(item => item.id !== id)
+        console.log(newItems)
+        
+        totalCounter()
+        totalPagar()
+        setItems(newItems)
+    }
+    
+
+        
+        
+    const lastCart = {
+        counter: counter,
+        setCounter: setCounter,
+        items: items,
+        total: Number(total.toFixed(2)),
+        setTotal: setTotal,
+        addItem: addItem,
+        removeItem: removeItem
+    }
 
     return (
         <Provider value = {lastCart}>

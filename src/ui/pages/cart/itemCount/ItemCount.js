@@ -1,12 +1,12 @@
-import { useContext } from "react"
-import {useState} from "react"
-import { context } from "../CartContext"
 
-const ItemCount = ({ stock, initial, onAdd: addToCart }) => {
+import {useState} from "react"
+
+
+const ItemCount = ({ stock, initial, onAdd: updateCart }) => {
 
     const [itemCounter, setCounter] = useState(initial)
 
-    const lastCart = useContext(context)
+
     // console.log(lastCart)
 
     const aumentarContador = (e) => {
@@ -21,13 +21,11 @@ const ItemCount = ({ stock, initial, onAdd: addToCart }) => {
 
     const addItemToCart = (e) => {
         e.stopPropagation()
-        let totalCounter = lastCart.counter + itemCounter
-        addToCart(itemCounter, totalCounter)
-        // lastCart.setCart(lastCart.counter + itemCounter)
+        updateCart(itemCounter)
     }
 
     return (
-        <div className="container">
+        <div className="container"> 
             <div className="count-buttons">
                 <button onClick={disminuirContador}>-</button>
                 <span>{itemCounter}</span>

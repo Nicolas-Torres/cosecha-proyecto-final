@@ -1,21 +1,27 @@
 import { useContext, useState } from "react"
 import { context } from "./CartContext"
-import trash from "../../../assets/img/icon/trash.png"
+import trashIcon from "../../../assets/img/icon/trash.png"
 // import { useTable } from "react-table"
 
 
 
 const Cart = () => {
 
-    const lastCart = useContext(context)
-    
-    const [itemsToBuy, setitemsToBuy] = useState(lastCart.items.length)
+    const cart = useContext(context)
+    console.log(cart)
+    const [itemsToBuy, setitemsToBuy] = useState(cart.items.length)
     
 
     console.log(itemsToBuy)
 
 
+    const updateCart = (id) => {
+        
+        cart.removeItem(id)
+        setitemsToBuy(cart.items.length-1)
+        console.log("item eliminado")
 
+    }
 
 
   return (
@@ -45,15 +51,15 @@ const Cart = () => {
                             <td colSpan="5" style={{textAlign: "center"}}>{"carrito vacío"}</td>
                         </tr>
                     ) : (
-                        lastCart.items.map(item => {
+                        cart.items.map(item => {
                             return (
                                 <tr key={item.id}>
                                     <td>{item.title}</td>
                                     <td>{item.quantity}</td>
-                                    <td>{item.unitPrice}</td>
+                                    <td>{item.itemPrice}</td>
                                     <td>{item.subTotal}</td>
                                     <td>
-                                        <img className="button-remove-item" onClick={()=>{console.log("eliminar item")}} src={trash} alt="eliminar" width={20}/>
+                                        <img className="button-remove-item" onClick={()=>updateCart(item.id)} src={trashIcon} alt="eliminar" width={20}/>
                                     </td>
                                 </tr>
                             )
@@ -64,7 +70,7 @@ const Cart = () => {
                         <tr>
                             <td colSpan="2"></td>
                             <td style={{fontWeight: "bold"}}>{"TOTAL"}</td>
-                            <td style={{fontWeight: "bold"}}>{`S/ ${lastCart.total}`}</td>
+                            <td style={{fontWeight: "bold"}}>{`S/ ${cart.total}`}</td>
                         </tr>
             </tbody>
         </table>
