@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
                     console.log("Ok, producto cargado.")
                 })
                 
-            },1000)
+            },0)
     },[id])
 
     // console.table(itemDetail)

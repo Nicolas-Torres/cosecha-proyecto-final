@@ -2,12 +2,9 @@
 import {useState} from "react"
 
 
-const ItemCount = ({ stock, initial, onAdd: updateCart }) => {
+const ItemCount = ({ stock, initial, updateCart }) => {
 
     const [itemCounter, setCounter] = useState(initial)
-
-
-    // console.log(lastCart)
 
     const aumentarContador = (e) => {
         e.stopPropagation()

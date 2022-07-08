@@ -6,11 +6,10 @@ import { context } from "./CartContext"
 
 const CartWidget = () => {
 
-  const totalPurchaseCart = useContext(context)
-
+  const {cartItems,cartInfo} = useContext(context)
   return (
     <div>
-      <h3>{totalPurchaseCart.counter}</h3>
+      {cartItems.items.length === 0 ? <></> : <h3>{cartInfo.totalCounter}</h3>}
       <Link to="/cart">
         <img src={cartIcon} alt="cart-icon" width="32"/>
       </Link>

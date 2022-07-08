@@ -27,7 +27,7 @@ const ItemListContainer = ({ greeting }) => {
           console.log("Ok, productos cargados.")
         });
         
-      },1000);
+      },0);
       setLoading(false)
     } else {
       loadingText.current = "Cargando filtro..."
@@ -43,7 +43,7 @@ const ItemListContainer = ({ greeting }) => {
           console.log("Ok, productos filtrados.")
         });
 
-      },1000);
+      },0);
       setLoading(false)
     }
   },[category])

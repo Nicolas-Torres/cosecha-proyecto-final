@@ -6,15 +6,13 @@ import { context } from "../CartContext"
 const ItemDetail = ({item}) => {
 
     const [ itemCounter, setItemCounter] = useState(0)
+    const { cartItems } = useContext(context)
 
-    const cart = useContext(context)
-    console.log(cart)
-
-    //! STATE UPLIFTING
+    //! STATE UPLIFTING 
 
     const updateCart = (itemCounter) => {
         
-        cart.addItem(item, itemCounter)
+        cartItems.addItem(item, itemCounter)
         setItemCounter(itemCounter)
         console.log("agregado al carrito")
 
@@ -30,7 +28,7 @@ const ItemDetail = ({item}) => {
             </article>
             <h3>{"Stock disponible: " + item.stock}</h3>
             {itemCounter === 0 ? (
-                <ItemCount stock={item.stock} initial={1} onAdd={updateCart}/>
+                <ItemCount stock={item.stock} initial={1} updateCart={updateCart}/>
             ) : (
                 <>
                 <h3>{ "Cantidad agregada al carrito: " + itemCounter }</h3>
