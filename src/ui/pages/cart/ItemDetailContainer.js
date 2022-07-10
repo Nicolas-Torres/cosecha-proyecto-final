@@ -3,32 +3,33 @@ import ItemDetail from "./itemDetail/ItemDetail"
 import { useParams } from "react-router-dom"
 import spinner from "../../../assets/img/spinner.gif"
 import "./ItemDetailContainer.css"
+import { db } from "../../../API/firebase/firebase"
+import { getDoc, doc } from "firebase/firestore"
 
 
 
 const ItemDetailContainer = () => {
 
     const [itemDetail, setItemDetail] = useState({})
-
     const { id } = useParams()
 
     useEffect(() => {
         
         console.log("pidiendo producto...")
 
-        setTimeout(()=>{
+        const collectionProducts = doc(db, "items", `${id}`)
+        const consulta = getDoc(collectionProducts)
+        consulta
+        .then((res)=>{
+            const item = res.data()
+            item.idFirebase = res.id
+            setItemDetail(item)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
 
-            fetch("../items.json")
-                .then( response => response.json())
-                .then( (data) => {
-                    setItemDetail(data.find(item => item.id === id))
-                    console.log("Ok, producto cargado.")
-                })
-                
-            },0)
     },[id])
-
-    // console.table(itemDetail)
 
     return (
         <div className="container">

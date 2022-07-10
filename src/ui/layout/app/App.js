@@ -5,6 +5,7 @@ import Footer from "../footer/Footer"
 import { BrowserRouter } from "react-router-dom"
 import SelfProvider from "../../pages/cart/CartContext"
 
+
 const App = () => {
     
     //! Todo lo que esta dentro de BrowserRouter son parámetros

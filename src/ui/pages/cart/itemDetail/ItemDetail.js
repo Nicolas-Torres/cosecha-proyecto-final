@@ -11,11 +11,9 @@ const ItemDetail = ({item}) => {
     //! STATE UPLIFTING 
 
     const updateCart = (itemCounter) => {
-        
         cartItems.addItem(item, itemCounter)
         setItemCounter(itemCounter)
         console.log("agregado al carrito")
-
     }
 
     return (
@@ -32,6 +30,9 @@ const ItemDetail = ({item}) => {
             ) : (
                 <>
                 <h3>{ "Cantidad agregada al carrito: " + itemCounter }</h3>
+                <Link to="/">
+                <button>Continuar comprando</button>
+                </Link>
                 <Link to="/cart">
                 <button>Terminar compra</button>
                 </Link>

@@ -1,10 +1,10 @@
 // import ItemCount from "../itemCount/ItemCount"
 import { Link } from "react-router-dom"
 
-const Item = ({ id, title, picUrl, price, stock }) => {
+const Item = ({ id, idFirebase, title, picUrl, price, stock }) => {
   return (
     <div className="item-card">
-      <Link to={`/item/${id}`}>
+      <Link to={`/item/${idFirebase}`}>
         <article key={id} className="item-catalog">
               <h1 className="title">{title}</h1>
               <img className="img" src={picUrl} alt={title} width="300" heigth="auto"/>

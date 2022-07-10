@@ -6,6 +6,7 @@ const ItemList = ({ items }) => {
         <Item
         key={items.id}
         id={items.id}
+        idFirebase={items.idFirebase}
         title={items.title}
         picUrl={items.picUrl}
         price={items.price}
