@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const Item = ({ id, idFirebase, title, picUrl, price, stock }) => {
   return (
     <div className="item-card">
-      <Link to={`/item/${idFirebase}`}>
+      <Link to={`/item/${id}`}>
         <article key={id} className="item-catalog">
               <h1 className="title">{title}</h1>
               <img className="img" src={picUrl} alt={title} width="300" heigth="auto"/>

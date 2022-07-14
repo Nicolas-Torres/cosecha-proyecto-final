@@ -4,26 +4,28 @@ import { useParams } from "react-router-dom"
 import spinner from "../../../assets/img/spinner.gif"
 import "./ItemDetailContainer.css"
 import { db } from "../../../API/firebase/firebase"
-import { getDoc, doc } from "firebase/firestore"
+import { getDocs, collection, query, where} from "firebase/firestore"
 
 
 
 const ItemDetailContainer = () => {
 
     const [itemDetail, setItemDetail] = useState({})
+    const [loading, setLoading] = useState(true)
     const { id } = useParams()
-
+    console.log(id)
     useEffect(() => {
         
         console.log("pidiendo producto...")
-
-        const collectionProducts = doc(db, "items", `${id}`)
-        const consulta = getDoc(collectionProducts)
+        const q = query(collection(db, "items"), where("id","==",`${id}`))
+        const consulta = getDocs(q)
         consulta
         .then((res)=>{
-            const item = res.data()
-            item.idFirebase = res.id
+            const item = res.docs[0].data()
+            item.idFirebase = res.docs[0].id
             setItemDetail(item)
+            setLoading(false)
+            console.log("Ok, producto cargado.")
         })
         .catch((error)=>{
             console.log(error)
@@ -35,7 +37,7 @@ const ItemDetailContainer = () => {
         <div className="container">
             <h2>Detalle del producto</h2>
             <div className="item-detail">
-                {Object.keys(itemDetail).length === 0 ? (
+                {loading ? (
                     <div className="loading-item-detail">
                         <p>Cargando detalles del producto...</p>
                         <img src={spinner} alt = "icon" width="50"/>
@@ -48,6 +50,4 @@ const ItemDetailContainer = () => {
     )
 }
 
-
-// Object.keys(itemDetail).length !== 0
 export default ItemDetailContainer

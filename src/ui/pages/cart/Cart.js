@@ -2,27 +2,62 @@ import { useContext } from "react"
 import { context } from "./CartContext"
 import { Link } from "react-router-dom"
 import trashIcon from "../../../assets/img/icon/trash.png"
+import Form from "./form"
+
+
+
+import { getDoc, doc} from "firebase/firestore"
+import { db } from "../../../API/firebase/firebase"
+
 // import { useTable } from "react-table"
 
 const Cart = () => {
 
-    const { cartItems, cartInfo } = useContext(context)
-
+    const { cartItems, cartInfo, orderInfo } = useContext(context)
+    
     const updateCart = (id) => {
-        
         cartItems.removeItem(id)
-
         console.log("item eliminado")
-
     }
 
     const clearItems = () => {
-
         cartItems.clearItems()
     }
 
+
+    const searchOrder = (e) => {
+        e.preventDefault(e)
+        console.log(e.target.form[0].name)
+        console.log(e.target.form[0].value)
+        const orderToFind = e.target.form[0].value
+        const q = doc(db, "ordenes",`${orderToFind}`)
+        const consulta = getDoc(q)
+        consulta
+        .then((res)=>{
+            console.log(res.data())
+            orderInfo.addOrder(res.data())
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+
+
+
+
+
+
+
+
     return (
         <div className="container">
+            <p>Ingrese el código de compra:</p>
+            <form>
+                <input type="text" name="order" placeholder="Ej. 0gv3kVFrNdJfZQhRx"/>
+                {/* <Link to={`/order/${orderToFind}`}> */}
+                    <button onClick={searchOrder}>Buscar</button>
+                {/* </Link> */}
+            </form>
             <table className="cart">
                 <caption>
                     <h1>Resumen de compra</h1>
@@ -81,9 +116,15 @@ const Cart = () => {
                     </Link>
                 </div>
             ) : (
+                <>
                 <div className="button-clear-cart">
                     <button onClick={()=>clearItems()}>Vaciar carrito</button>
                 </div>
+                <Link to="/">
+                <button>Seguir comprando</button>
+                </Link>
+                <Form/>
+                </>
             )
             }
         </div>
