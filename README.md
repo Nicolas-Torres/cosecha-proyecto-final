@@ -12,4 +12,4 @@ En este proyecto, con el permiso de la cafetería **Cosecha Coffee**, intento re
 ### Descripción
 El proyecto esta desarrollado en React JS en donde se muestra un catálogo de 6 bolsas de café, cada uno con su stock definido, además hay 3 opciones de filtro por categoría y cuando se realiza la compra se debe rellenar un formulario y la aplicación te brindará un código de compra. Con este código puedes buscar el detalle de tu compra en la opción **Mis compras**.
 
-## Deploy: [Cosecha Coffee](transcendent-arithmetic-e6d999.netlify.app)
+## Deploy: ([Cosecha Coffee](https://transcendent-arithmetic-e6d999.netlify.app/))
