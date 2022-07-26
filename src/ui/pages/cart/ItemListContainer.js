@@ -1,89 +1,61 @@
-
-import { useEffect, useState, useRef } from "react"
-import ItemList from "./itemList/ItemList"
+import { useEffect, useState } from "react"
 import { useParams} from "react-router-dom"
-
-import spinner from "../../../assets/img/spinner.gif"
-import "./ItemListContainer.css"
-
 import { db } from "../../../API/firebase/firebase"
 import { getDocs, collection, query, where } from "firebase/firestore"
 
-// getDocs: Sirve para traer muchos documentos en una coleccion
-// getDoc: Sirve para traer un solo documento en base a su ID
-// doc: Referencia un documento de coleccion
-// query
-// where
+import ItemList from "./itemList/ItemList"
+import spinner from "../../../assets/img/spinner.gif"
+import "./ItemListContainer.css"
 
 const ItemListContainer = ({ greeting }) => {
 
 	const [items, setItems] = useState([])
 	const [loading, setLoading] = useState(true)
 	const { category } = useParams()
-
-	const loadingText = useRef("Cargando catálogo...");
 	
-  	useEffect(() => {
+	useEffect(() => {
+		let products
 		if (!category){
-			loadingText.current = "Cargando catálogo...";
-			console.log("pidiendo productos...")
-
-			const products = collection(db, "items")
-			const consulta = getDocs(products)
-		
-			consulta
-			.then((res)=>{
-				const items = res.docs.map(val => {
-					const item = val.data()
-					item.idFirebase = val.id
-					return item
-				})
-				setItems(items)
-				setLoading(false)
-				console.log("Ok, productos cargados.")
-				
-			})
-			.catch((error)=>{
-				console.log(error)
-			})
-
+			products = collection(db, "items")
 		} else {
-			loadingText.current = "Cargando filtro..."
-			console.log("filtrando productos...")
-
-			const q = query(collection(db, "items"), where("category", "==", `${category}`))
-			const consulta = getDocs(q)
-			consulta
-			.then((res)=>{
-				const items = res.docs.map(val => {
-					const item = val.data()
-					item.idFirebase = val.id
-					return item
-				})
-				setItems(items)
-				setLoading(false)
-				console.log("Ok, productos filtrados.")
-			})
-			.catch((error)=>{
-				console.log(error)
-			})
+			products = query(collection(db, "items"), where("category", "==", `${category}`))
 		}
-  	},[category])
+		const consulta = getDocs(products)
+		consulta
+		.then((res)=>{
+			const items = res.docs.map(val => {
+				const item = val.data()
+				item.idFirebase = val.id
+				return item
+			})
+			setItems(items)
+			setLoading(false)
+		})
+		.catch((error)=>{
+			console.log(error)
+		})
+	},[category])
+	
+	// const pathName = () => {
+	// 	const route = window.location.pathname.slice(10,window.location.pathname.length)
+	// 	path(route)
+	// }
+
+	// pathName()
 
 	return (
-		<div className="container">
-		<h2>{greeting}</h2>
-		<div className="item-list">
-			{loading ? (
-			<div className="loading-catalog">
-				<p>{loadingText.current}</p>
-			<img src={spinner} alt = "icon" width="50"/>
-		</div>
-			) : (
-			<ItemList items={items}/>
-			)}
-		</div>
-		</div>
+		<section id="catalog">
+			<h2 className="greeting">{category || greeting }</h2>
+			<div className="item-list">
+				{loading ? (
+					<div className="loading-catalog">
+						<img src={spinner} alt = "icon" width="50"/>
+					</div>
+				) : (
+					<ItemList items={items}/>
+				)}
+			</div>
+		</section>
 	)
 }
 

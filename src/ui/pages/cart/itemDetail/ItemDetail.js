@@ -8,19 +8,16 @@ const ItemDetail = ({item}) => {
     const [ itemCounter, setItemCounter] = useState(0)
     const { cartItems } = useContext(context)
 
-    //! STATE UPLIFTING 
-
     const updateCart = (itemCounter) => {
         cartItems.addItem(item, itemCounter)
         setItemCounter(itemCounter)
-        console.log("agregado al carrito")
     }
 
     return (
         <div className="item-detail-card">
             <article className="item">
                 <h1 className="title">{item.title}</h1>
-                <img src={item.picUrl} alt={item.title} width="300" height="auto"/>
+                <img src={item.picUrl} alt={item.title} width="200" height="auto"/>
                 <h3 className="item-detail-description">{item.description}</h3>
                 <h2 id="price">{"S/" + item.price}</h2>
             </article>

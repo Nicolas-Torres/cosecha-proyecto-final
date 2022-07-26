@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react"
-import ItemDetail from "./itemDetail/ItemDetail"
 import { useParams } from "react-router-dom"
-import spinner from "../../../assets/img/spinner.gif"
-import "./ItemDetailContainer.css"
 import { db } from "../../../API/firebase/firebase"
 import { getDocs, collection, query, where} from "firebase/firestore"
 
-
+import ItemDetail from "./itemDetail/ItemDetail"
+import spinner from "../../../assets/img/spinner.gif"
+import "./ItemDetailContainer.css"
 
 const ItemDetailContainer = () => {
 
     const [itemDetail, setItemDetail] = useState({})
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
-    console.log(id)
+
     useEffect(() => {
-        
-        console.log("pidiendo producto...")
         const q = query(collection(db, "items"), where("id","==",`${id}`))
         const consulta = getDocs(q)
         consulta
@@ -25,12 +22,10 @@ const ItemDetailContainer = () => {
             item.idFirebase = res.docs[0].id
             setItemDetail(item)
             setLoading(false)
-            console.log("Ok, producto cargado.")
         })
         .catch((error)=>{
             console.log(error)
         })
-
     },[id])
 
     return (

@@ -12,7 +12,8 @@ const Provider = context.Provider
 const SelfProvider = ({ children }) => {
     
     const [items, setItems] = useState([])
-    const [order, setOrder] = useState("")
+    const [orderData, setOrder] = useState({})
+    const [orderId, setOrderId] = useState("")
 
     const addItem = (item, itemCounter) => {
 
@@ -91,10 +92,17 @@ const SelfProvider = ({ children }) => {
         setItems([])
     }
 
-    const addOrder = (orderId) => {
-        setOrder(orderId)
+    const addOrderData = (orderData) => {
+        setOrder(orderData)
     }
 
+    const addOrderId = (orderId) => {
+        setOrderId(orderId)
+    }
+
+    const removeOrderId = () => {
+        setOrderId("")
+    }
 
     const cartItems = {
         items,
@@ -110,8 +118,11 @@ const SelfProvider = ({ children }) => {
     }
 
     const orderInfo = {
-        order: order,
-        addOrder
+        id: orderId,
+        data: orderData,
+        addOrderId,
+        addOrderData,
+        removeOrderId
     }
 
     return (

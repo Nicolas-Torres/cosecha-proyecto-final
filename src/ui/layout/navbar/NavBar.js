@@ -1,15 +1,16 @@
-import CartWidget from "../../pages/cart/CartWidget.js";
 import { Link } from "react-router-dom"
-
+import CartWidget from "../../pages/cart/CartWidget.js";
+import "./navBar.css"
 const NavBar = ({inHeader, className}) => {
 
     return (
         <nav className={className}>
             {inHeader ?
                 <>
-                <Link to="/category/cat1">Filtro 1</Link>
-                <Link to="/category/cat2">Filtro 2</Link>
-                <Link to="/category/cat3">Filtro 3</Link>
+                <Link to="/category/Categoría 1">Filtro 1</Link>
+                <Link to="/category/Categoría 2">Filtro 2</Link>
+                <Link to="/category/Categoría 3">Filtro 3</Link>
+                <Link to="/order/my-purchase">Mis compras</Link>
                 <CartWidget />
                 </>
             : 

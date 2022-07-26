@@ -5,10 +5,15 @@ footer.container{
     align-items: center;
 }
 
-footer{
-    padding-top: 20px;
 
+footer{
+    margin-top: auto;
+    padding-top: 20px;
     background-color: rgba(245, 245, 245);
+    bottom: 0;
+    /* position: absolute; */
+    width: 100%;
+    
 }
 
 footer a{

@@ -1,0 +1,10 @@
+/* #order {
+    width: 100%;
+    height: 100vh;
+} */
+
+#order {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
